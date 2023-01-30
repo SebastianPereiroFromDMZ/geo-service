@@ -1,6 +1,10 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import ru.netology.entity.Country;
+import ru.netology.entity.Location;
 import ru.netology.geo.GeoService;
 import ru.netology.geo.GeoServiceImpl;
 import ru.netology.i18n.LocalizationService;
@@ -19,5 +23,8 @@ public class Main {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put(MessageSenderImpl.IP_ADDRESS_HEADER, "172.123.12.19");
         messageSender.send(headers);
+
+
+
     }
 }
