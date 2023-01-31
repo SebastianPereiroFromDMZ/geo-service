@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import ru.netology.entity.Country;
@@ -27,13 +29,22 @@ public class GeoServiceImplTests {
                 Arguments.of(new Location("Moscow", Country.RUSSIA, "Lenina", 15), "172.0.32.11"),
                 Arguments.of(new Location("New York", Country.USA, " 10th Avenue", 32), "96.44.183.149"),
                 Arguments.of(new Location("Moscow", Country.RUSSIA, null, 0), "172."),
-                Arguments.of(new Location("New York", Country.USA, null, 0), "96."));
+                Arguments.of(new Location("New York", Country.USA, null, 0), "96."),
+                Arguments.of(null, "000.0.0.0"));
     }
 
+    @Test
+    void testExceptionByCoordinates() {
+
+        GeoService geoService = new GeoServiceImpl();
+        double a = 544.221, b = 4222.211;
+        Class<RuntimeException> expectedExceptionClass = RuntimeException.class;
+
+        Executable executable = () -> geoService.byCoordinates(a,b);
+
+        assertThrows(expectedExceptionClass, executable);
 
 
 
-
-
-
+    }
 }
